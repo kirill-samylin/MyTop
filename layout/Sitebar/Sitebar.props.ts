@@ -1,0 +1,1 @@
+export interface SitebarProps extends React.HTMLAttributes<HTMLDivElement> {}
