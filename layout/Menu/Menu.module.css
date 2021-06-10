@@ -1,0 +1,33 @@
+.menu {
+    
+}
+.firstLevel {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 20px;
+    align-items: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+}
+.firstLevelAvtive,
+.firstLevel:hover {
+    color: var(--primary);
+
+}
+.firstLevelAvtive svg,
+.firstLevel:hover svg {
+    fill: var(--primary);
+}
+
+.secondLevel {
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    color: var(--gray-dark);
+
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 300;
+}
