@@ -7,12 +7,12 @@
     font-size: 18px;
     line-height: 25px;
 }
-.firstLevelAvtive,
+.firstLevelActive,
 .firstLevel:hover {
     color: var(--primary);
 
 }
-.firstLevelAvtive svg,
+.firstLevelActive svg,
 .firstLevel:hover svg {
     fill: var(--primary);
 }

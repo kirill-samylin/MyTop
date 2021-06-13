@@ -13,14 +13,14 @@ import { TopLevelCategory } from '../../interfaces/page.interfaces';
 
 const firstLevelMenu: FirstLevelMenuItem[] = [
     { route: 'courses', name: 'Курсы', icon: <CoursesIcon />, id: TopLevelCategory.Courses },
-    { route: 'services', name: 'Сервисы', icon: <ServicesIcon />, id: TopLevelCategory.Courses },
-    { route: 'books', name: 'Книги', icon: <BooksIcon />, id: TopLevelCategory.Courses },
-    { route: 'products', name: 'Продукты', icon: <ProductsIcon />, id: TopLevelCategory.Courses },
+    { route: 'services', name: 'Сервисы', icon: <ServicesIcon />, id: TopLevelCategory.Services },
+    { route: 'books', name: 'Книги', icon: <BooksIcon />, id: TopLevelCategory.Books },
+    { route: 'products', name: 'Продукты', icon: <ProductsIcon />, id: TopLevelCategory.Products },
 ];
 
 export const Menu = (): JSX.Element => {
-    const { menu, firstCategoty, setMenu } = useContext(AppContext);
-    
+    const { menu, firstCategory, setMenu } = useContext(AppContext);
+
     const buildFirstLevel = () => {
         return (
             <>
@@ -28,13 +28,13 @@ export const Menu = (): JSX.Element => {
                     <div key={m.route}>
                         <a href={`/${m.route}`}>
                             <div className={cn(styles.firstLevel, {
-                                [styles.firstLevelActive]: m.id === firstCategoty
+                                [styles.firstLevelActive]: m.id == firstCategory
                             })}>
                                 {m.icon}
                                 <span>{m.name}</span>
                             </div>
                         </a>
-                        {m.id == firstCategoty && buildSecondLevel(m)}
+                        {m.id == firstCategory && buildSecondLevel(m)}
                     </div>
                 ))}
             </>
