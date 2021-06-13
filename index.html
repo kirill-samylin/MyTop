@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .lazy {
+        
+        border-radius: 10px;
+        color: white;
+    }
+    .lazy__title {
+        font-size: 26px;
+        padding: 0 20px;
+        text-align: center;
+    }
+    .lazy__textarea {
+        width: 100%;
+        border-radius: 10px;
+    }
+    .lazy__label {
+        font-size: 18px;
+        margin-bottom: 2px;
+    }
+    .lazy__button {
+        border-radius: 5px;
+        font-size: 18px;
+        border: none;
+    }
+    body {
+        background-color: #e33b44;
+    }
+</style>
+<style>
+    .partners {
+        color: white;
+        margin-top: 200px;
+    }
+    .partners__list {
+        display: grid;
+        grid-template-columns: [startline] minmax(300px, 400px) minmax(300px, 400px) minmax(300px, 400px) [endline];
+        grid-auto-flow: dense;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 40px;
+        list-style: none;
+        padding: 0;
+        max-width: 80%;
+        margin: 0 auto;
+        grid-template-areas: 
+        "i1 i0 i2"
+        "i1 i0 i3"
+        "i1 i0 i4"
+        "i1 i0 .";
+
+        text-align: start;
+    }
+    .partners__platform {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .partners__link {
+        margin: 0 20px;
+    }
+    .partners__icon {
+        display: block;
+        width: 200px;
+        height: 70px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10%;
+    }
+    .apple {
+       
+        background-image: url(https://market-sber.ru/wp-content/uploads/2020/02/App-Store-1536x1152.png);
+    }
+    .android {
+        background-image: url(https://enginer-pro.ru/uploadedFiles/images/gp.png);
+    }
+    .partners__title {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+    .partners__city {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 24px 0;
+    }
+    .partners__names {
+        padding-left: 20px !important;
+        list-style: disc; 
+    }
+    .partners__name {
+        font-size: 18px;
+    }
+    .i0 {
+        grid-area: i0;
+    }
+    .i1 {
+        grid-area: i1;
+    }
+    .i2 {
+        grid-area: i2;
+    }
+    .i3 {
+        grid-area: i3;
+    }
+    .i4 {
+        grid-area: i4;
+    }
+    @media (max-width: 1050px) {
+        .partners__list {
+            grid-template-columns: [startline] minmax(300px, 400px) minmax(300px, 400px) [endline];
+            grid-template-areas: 
+                "i1 i0"
+                "i1 i0"
+                "i1 i2 "
+                "i1 i3"
+                "i1 i4"
+                "i1 .";
+        }
+    }
+    @media (max-width: 700px) {
+        .partners__list {
+            grid-template-columns: [startline] minmax(300px, 400px) [endline];
+            grid-template-areas: 
+                "i0"
+                "i1"
+                "i2"
+                "i3"
+                "i4";
+        }
+    }
+    @media (max-width: 500px) {
+        .partners__platform {
+            flex-direction: column;
+        }
+    }
+</style>
+<body>
+    <section class="partners">
+        <h3 class="partners__title">Наши клиенты:</h3>
+        <div class="partners__platform">
+            <a class="partners__link" href="https://play.google.com/store/apps/developer?id=foodle" target="_blank" rel="noopener noreferrer">
+                <i class="partners__icon android"></i>
+            </a>
+            <a class="partners__link" href="https://apps.apple.com/ng/developer/foodle-platform-llc/id1565943117#see-all/i-phone-apps" target="_blank" rel="noopener noreferrer">
+                <i class="partners__icon apple"></i>
+            </a>
+        </div>
+        <ul id="partners" class="partners__list">
+            <li class="partners__item">
+                <p class="partners__city">Москва</p>
+                <ul class="partners__names">
+                    <li class="partners__name">
+                        Buffet WL на 8го марта
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <fieldset class="lazy">
+        <legend class="lazy__title">Ленивый фронт</legend>
+        <label class="lazy__label" for="text">Введите текст:
+            <textarea class="lazy__textarea" name="" id="textarea" rows="10"></textarea>
+        </label>
+        <label class="lazy__label" for="name">Введите название ключа: </label>
+        <input type="text" name="" id="name" placeholder="name">
+        <button class="lazy__button" type="button" id="button">Создать</button>
+        <pre id="lazy__final">
+        </pre>
+    </fieldset>
+
+    <script>
+        const button = document.getElementById("button");
+        const textarea = document.getElementById("textarea");
+        const inputName = document.getElementById("name");
+        const output = document.getElementById("lazy__final");
+        function toJson() {
+            const text = textarea.value;
+            const arrayStr = text.split('\n');
+            const nameKey = inputName.value;
+            const final = arrayStr.reduce((arr, str) => {
+                arr.push({ [nameKey]: str.replace("WL ", "").replace(" WL", "") });
+                return arr; 
+            }, []);
+            output.textContent = JSON.stringify(final, null, 2);
+        }
+
+        button.addEventListener('click', toJson);
+
+        const partnersElement = document.getElementById("partners");
+
+        function createLayout(partners) {
+            const layout = partners.reduce((str, partner, i) => {
+                let restaurants = '';
+                for (let restaurant of partner.restaurants) {
+                    restaurants+= `
+                        <li class="partners__name">
+                            ${restaurant.name}
+                        </li>
+                    `;
+                }
+                str+=`
+                    <li class="partners__item i${i}">
+                        <p class="partners__city">${partner.city}:</p>
+                        <ul class="partners__names">
+                            ${restaurants}
+                        </ul>
+                    </li>
+                `;
+                return str;
+            }, '');
+
+            partnersElement.innerHTML = layout;
+        }
+        
+        
+
+        const partners = [
+            {
+                city: 'Москва',
+                restaurants: [
+                    {
+                        "name": "Buffet на 8го марта"
+                    },
+                    {
+                        "name": "Buffet на Большой Ордынке"
+                    },
+                    {
+                        "name": "Buffet на Варшавском"
+                    },
+                    {
+                        "name": "Candy Waffle на Старопетровском"
+                    },
+                    {
+                        "name": "Candy Waffle на Международной"
+                    },
+                    {
+                        "name": "Chandelier"
+                    },
+                    {
+                        "name": "Double Bourbon"
+                    },
+                    {
+                        "name": "Feel Italian"
+                    },
+                    {
+                        "name": "Grammys"
+                    },
+                    {
+                        "name": "La Prima Pizzeria Margherita на Гиляровского"
+                    },
+                    {
+                        "name": "La Prima Pizzeria Margherita на Ладожской"
+                    },
+                    {
+                        "name": "Logovo"
+                    },
+                    {
+                        "name": "LuSun"
+                    },
+                    {
+                        "name": "Амбассадория"
+                    },
+                    {
+                        "name": "Бахтриони"
+                    },
+                    {
+                        "name": "Березовая роща"
+                    },
+                    {
+                        "name": "Зизифора"
+                    },
+                    {
+                        "name": "ЛисКейтеринг"
+                    },
+                    {
+                        "name": "Мадиани на Нижегородской"
+                    },
+                    {
+                        "name": "Мадиани на Павелецкой"
+                    },
+                    {
+                        "name": "Мацони на Новокузнецкой"
+                    },
+                    {
+                        "name": "Мацони на Большой Сухаревской"
+                    },
+                    {
+                        "name": "Мацони на Большой Семеновской"
+                    },
+                    {
+                        "name": "Мацони на Ленинском проспекте"
+                    },
+                    {
+                        "name": "Невские Мелодии"
+                    },
+                    {
+                        "name": "ОЧАG"
+                    },
+                    {
+                        "name": "Страдивари"
+                    },
+                    {
+                        "name": "Хинкальный Дом Тбилисо"
+                    },
+                    {
+                        "name": "Трактир Тбилисо"
+                    },
+                    {
+                        "name": "У Адама"
+                    }
+                ]
+            },
+            {
+                city: 'Санкт-Петербург',
+                restaurants: [
+                    {
+                        "name": "BILBAO"
+                    },
+                    {
+                        "name": "BurgerLab"
+                    },
+                    {
+                        "name": "Coffee art"
+                    },
+                    {
+                        "name": "CUBAR на Чернышевского"
+                    },
+                    {
+                        "name": "Expreess - Суши на Наставников"
+                    },
+                    {
+                        "name": "Expreess - Суши на Новочеркасском"
+                    },
+                    {
+                        "name": "Furset"
+                    },
+                    {
+                        "name": "GIROS на Гороховой"
+                    },
+                    {
+                        "name": "Irish Pub Morane"
+                    },
+                    {
+                        "name": "Janno restobar"
+                    },
+                    {
+                        "name": "LALE"
+                    },
+                    {
+                        "name": "LAMBIC"
+                    },
+                    {
+                        "name": "Leo shaverma Bar на Жуковского"
+                    },
+                    {
+                        "name": "Leo Shaverma Bar на Караванной"
+                    },
+                    {
+                        "name": "MAGURO SUSHI"
+                    },
+                    {
+                        "name": "Mango"
+                    },
+                    {
+                        "name": "Mashita на Невском"
+                    },
+                    {
+                        "name": "Mashita на Каменноостровском"
+                    },
+                    {
+                        "name": "Mashita на Загородном проспекте"
+                    },
+                    {
+                        "name": "Мерула на Яхтенной"
+                    },
+                    {
+                        "name": "Мерула на Маяковского"
+                    },
+                    {
+                        "name": "Мерула на Невском"
+                    },
+                    {
+                        "name": "Мерула Двор"
+                    },
+                    {
+                        "name": "PARTY SONG"
+                    },
+                    {
+                        "name": "Pizza Maki"
+                    },
+                    {
+                        "name": "Pizza Maki на Александра Грина"
+                    },
+                    {
+                        "name": "PROЖарка"
+                    },
+                    {
+                        "name": "PURO"
+                    },
+                    {
+                        "name": "RoseMary"
+                    },
+                    {
+                        "name": "Sofia"
+                    },
+                    {
+                        "name": "SUSHI MADO"
+                    },
+                    {
+                        "name": "SUSHI MADO Ломоносов"
+                    },
+                    {
+                        "name": "Work-Food"
+                    },
+                    {
+                        "name": "YUJIN"
+                    },
+                    {
+                        "name": "Akapulko"
+                    },
+                    {
+                        "name": "Р-н Българ"
+                    },
+                    {
+                        "name": "Вахтангури"
+                    },
+                    {
+                        "name": "ГЕНАЦВАЛЕ"
+                    },
+                    {
+                        "name": "Заводные яйца"
+                    },
+                    {
+                        "name": "Ирис"
+                    },
+                    {
+                        "name": "Кафе Генацвале"
+                    },
+                    {
+                        "name": "КИТАЙ-ГОРОД на Мытнинской"
+                    },
+                    {
+                        "name": "КИТАЙ-ГОРОД на 3й Советской"
+                    },
+                    {
+                        "name": "Кафе Клумба"
+                    },
+                    {
+                        "name": "Monkey Gastrobar"
+                    },
+                    {
+                        "name": "Мистер Шницель"
+                    },
+                    {
+                        "name": "Мулан"
+                    },
+                    {
+                        "name": "Нева"
+                    },
+                    {
+                        "name": "Ода"
+                    },
+                    {
+                        "name": "Ори-Нори"
+                    },
+                    {
+                        "name": "Пузата Хата"
+                    },
+                    {
+                        "name": "Ресторан Пулково Парк"
+                    },
+                    {
+                        "name": "Barbolin House"
+                    },
+                    {
+                        "name": "Рога и копыта"
+                    },
+                    {
+                        "name": "Сабай-Sabay"
+                    },
+                    {
+                        "name": "СушиШоп на Ленсовета"
+                    },
+                    {
+                        "name": "СушиШоп на Пулковском"
+                    },
+                    {
+                        "name": "Суши шефа"
+                    },
+                    {
+                        "name": "Пиццерия Усы-Лисы"
+                    },
+                    {
+                        "name": "Усы Лисы на Ефимова"
+                    },
+                    {
+                        "name": "Хуторок"
+                    },
+                    {
+                        "name": "Черный рис на Лиговском"
+                    },
+                    {
+                        "name": "Черный рис на Дудина"
+                    },
+                    {
+                        "name": "Черный рис Сертолово"
+                    },
+                    {
+                        "name": "Черный рис на Планерной"
+                    },
+                    {
+                        "name": "Шаверма с локоть на Разъезжей"
+                    },
+                    {
+                        "name": "Шаверма с локоть на Восстания"
+                    },
+                    {
+                        "name": "Шарден"
+                    },
+                    {
+                        "name": "ШВАБСКИЙ ДОМИК"
+                    },
+                    {
+                        "name": "ЭтоБар"
+                    }
+                ],
+            },
+            {
+                city: 'Новосибирск',
+                restaurants: [
+                    {
+                        "name": "Pizza CLub"
+                    },
+                    {
+                        "name": "Заводная Креветка"
+                    },
+                    {
+                        "name": "СушиЕдим"
+                    }
+                ]
+            },
+            {
+                city: 'Омск',
+                restaurants: [
+                    {
+                        "name": "HOLLYWOOD coffeebar на 10 лет Октября"
+                    },
+                    {
+                        "name": "HOLLYWOOD coffeebar на Арктической"
+                    },
+                    {
+                        "name": "HOLLYWOOD coffeebar на Красном пути"
+                    }
+                ]
+            },
+            {
+                city: "Нижний Новгород",
+                restaurants: [
+                    {
+                        "name": "Берлога"
+                    }
+                ]
+            }
+        ];
+        createLayout(partners);
+    </script>
+</body>
+</html>
