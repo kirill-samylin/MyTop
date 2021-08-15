@@ -6,6 +6,7 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 25px;
+    margin-top: 20px;
 }
 .firstLevelActive,
 .firstLevel:hover {
@@ -29,7 +30,34 @@
     font-weight: 300;
 }
 .secondBlock {
+    margin-top: 15px;
     margin-left: 12px;
-    padding-right: 32px;
+    padding-left: 32px;
+    border-left: 1px solid #c7c6c6;
+}
 
+.secondLevelBlock {
+    display: none;
+}
+.secondLevelBlockOpened {
+    display: block;
+}
+.secondLevelBlockOpened:last-child {
+    margin-bottom: 20px;
+}
+
+.thirdLevel {
+    display: block;
+    margin-bottom: 10px;
+
+    cursor: pointer;
+    color: var(--gray-dark);
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+}
+.thirdLevelActive,
+.thirdLevel:hover {
+    color: var(--primary);
 }

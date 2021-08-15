@@ -23,11 +23,12 @@ export interface ProductModel {
     credit: number;
     price: number;
     oldPrice: number;
-    advantages: string;
+    advantages?: string;
     createdAt: Date;
     updatedAt: Date;
     reviews: ReviewModel[];
     reviewCount: number;
     reviewAvg?: number;
+    disadvantages?: string;
 }
 
