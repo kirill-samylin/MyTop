@@ -11,7 +11,6 @@
 }
 .header {
     grid-area: header;
-    display: none;
 }
 .sitebar {
     grid-area: sitebar;
@@ -26,15 +25,13 @@
     .sitebar {
         display: none !important;
     }
-    .header {
-        display: block;
-    }
     .wrapper {
         grid-template-columns: minmax(320px, 1fr);
         grid-template-areas: 
             "header"
             "main"
             "footer";
+        gap: 10px;
     }
     .main {
         padding: 15px;

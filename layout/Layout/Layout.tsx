@@ -6,6 +6,7 @@ import { Header } from '../Header/Header';
 import { Sitebar } from '../Sitebar/Sitebar';
 import { Footer } from '../Footer/Footer';
 import { AppContextProvider, IAppContext } from '../../context/app.context';
+import { Up } from '../../compoments';
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
     return (
@@ -16,6 +17,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
                 {children}
             </main>
             <Footer className={styles.footer} />
+            <Up />
         </div>
     );
 };

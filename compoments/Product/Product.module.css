@@ -113,17 +113,9 @@
     border-bottom: 1px dashed var(--gray-ligth);
     margin-bottom: 10px;
 }
-
-.closed {
-    overflow: hidden;
-    max-height: 0;
-    padding: 0;
-}
-.opened {
-    max-height: auto;
-    padding: 30px;
-}
 .reviews {
+    overflow: hidden;
+    padding: 30px;
 }
 @media screen and (max-width: 1320px) {
     .product {

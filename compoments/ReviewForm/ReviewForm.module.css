@@ -21,13 +21,17 @@
     grid-template-columns: auto 1fr;
     gap: 20px;
 }
-
-.success {
-    background: var(--green-ligth);
+.panel {
     padding: 20px;
     position: relative;
     border-radius: 5px;
     margin-top: 20px;
+}
+.success {
+    background: var(--green-ligth);
+}
+.error {
+    background: rgba(233, 4, 4, 0.568);
 }
 .successTitle {
     font-weight: bold;
@@ -37,6 +41,9 @@
     top: 20px;
     right: 20px;
     cursor: pointer;
+}
+.error .close path {
+    stroke: red;
 }
 @media screen and (max-width: 1024px) {
     .reviewForm {

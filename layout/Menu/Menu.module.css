@@ -35,17 +35,6 @@
     padding-left: 32px;
     border-left: 1px solid #c7c6c6;
 }
-
-.secondLevelBlock {
-    display: none;
-}
-.secondLevelBlockOpened {
-    display: block;
-}
-.secondLevelBlockOpened:last-child {
-    margin-bottom: 20px;
-}
-
 .thirdLevel {
     display: block;
     margin-bottom: 10px;
@@ -60,4 +49,7 @@
 .thirdLevelActive,
 .thirdLevel:hover {
     color: var(--primary);
+}
+.secondLevelBlock {
+    overflow: hidden;
 }
