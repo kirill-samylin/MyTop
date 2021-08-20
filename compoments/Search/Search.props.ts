@@ -1,3 +1,3 @@
-export interface SearchProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface SearchProps extends React.HTMLAttributes<HTMLFormElement> {
 
 }

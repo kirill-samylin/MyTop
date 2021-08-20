@@ -9,14 +9,23 @@ import { ProductModel } from '../../interfaces/product.interfaces';
 import { firstLevelMenu } from '../../helpers/helpers';
 import { TopPage } from '../../page-components';
 import { API } from '../../helpers/api';
-
+import Head from 'next/head';
 function Course({ firstCategory, page, products }: TopPageProps): JSX.Element {
   return (
-    <TopPage 
-        firstCategory={firstCategory} 
-        page={page} 
-        products={products} 
-    />
+      <>
+        <Head>
+            <title>{page.metaTitle}</title>
+            <meta name="description" content={page.metaDescription}/>
+            <meta property="og:title" content={page.metaTitle}/>
+            <meta property="og:description" content={page.metaDescription}/>
+            <meta property="og:type" content="article" />
+        </Head>
+        <TopPage 
+            firstCategory={firstCategory} 
+            page={page} 
+            products={products} 
+        />
+    </>
   );
 };
 

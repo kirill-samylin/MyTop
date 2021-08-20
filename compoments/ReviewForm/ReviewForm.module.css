@@ -1,63 +1,83 @@
 .reviewForm {
-    display: grid;
-    grid-template-columns: [start] auto 1fr auto [end];
-    gap: 20px 30px;
-    align-items: center;
+	display: grid;
+	grid-template-columns: [start] auto 1fr auto [end];
+	gap: 20px 30px;
 
-    font-size: 14px;
-    line-height: 24px;
+	align-items: center;
+
+	font-size: 14px;
+	line-height: 24px;
 }
-.description, .submit {
-    grid-column: start / end;
+
+.description,
+.submit {
+	grid-column: start / end;
 }
+
 .title {
-    justify-self: left;
+	justify-self: left;
 }
+
 .info {
-    margin-left: 15px;
+	margin-left: 15px;
 }
+
 .rating {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 20px;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 20px;
 }
+
 .panel {
-    padding: 20px;
-    position: relative;
-    border-radius: 5px;
-    margin-top: 20px;
+	position: relative;
+
+	margin-top: 20px;
+	padding: 20px;
+
+	border-radius: 5px;
 }
+
 .success {
-    background: var(--green-ligth);
+	background: var(--green-ligth);
 }
+
 .error {
-    background: rgba(233, 4, 4, 0.568);
+	background: rgba(233, 4, 4, 0.568);
 }
+
 .successTitle {
-    font-weight: bold;
+	font-weight: bold;
 }
+
 .close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+
+	border: none;
+	background: none;
 }
+
 .error .close path {
-    stroke: red;
+	stroke: red;
 }
+
 @media screen and (max-width: 1024px) {
-    .reviewForm {
-        grid-template-columns: [start] 1fr 1fr [end];
-    }
-    .rating {
-        grid-column: start / end;
-    }
-    .title {
-        justify-self: normal;
-    }
+	.reviewForm {
+		grid-template-columns: [start] 1fr 1fr [end];
+	}
+
+	.rating {
+		grid-column: start / end;
+	}
+
+	.title {
+		justify-self: normal;
+	}
 }
+
 @media screen and (max-width: 640px) {
-    .reviewForm {
-        grid-template-columns: [start] 1fr [end];
-    }
+	.reviewForm {
+		grid-template-columns: [start] 1fr [end];
+	}
 }

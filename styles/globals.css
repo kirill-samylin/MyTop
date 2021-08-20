@@ -2,9 +2,11 @@ html,
 body {
 	margin: 0;
 	padding: 0;
+
 	color: var(--black);
-	font-family: 'Noto Sans KR', sans-serif;
 	background: #E5E5E5;
+
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 a {
@@ -17,16 +19,25 @@ a {
 	box-sizing: border-box;
 }
 
+.visualyHidden {
+	position: absolute;
+
+	overflow: hidden;
+
+	width: 0;
+	height: 0;
+}
+
 :root {
 	--black: #3B434E;
 	--white: white;
-	--primary: #7653FC;
-	--primary-hover: #6246d3;
+	--primary: #6849DF;
+	--primary-hover: #6246D3;
 	--red: #DE0000;
-	--green: #1DC37E;
+	--green: #127A4F;
 	--green-ligth: #C8F8E4;
 	--font-family: 'Noto Sans KR', sans-serif;
 	--gray-ligth: #EBEBEB;
-	--gray-dark: #787D85;
+	--gray-dark: #62666C;
 	--gray: #A4A4A4;
 }

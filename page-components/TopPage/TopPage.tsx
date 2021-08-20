@@ -10,8 +10,6 @@ import { useScrollY } from '../../hooks/useScrollY';
 export const TopPage = ({ page, products, firstCategory }: TopPageProps): JSX.Element => {
     const [{ products: sortedProducts, sort }, dispathSort ] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
     
-    const yPosition = useScrollY();
-    
     function setSort(sort: SortEnum) {
         dispathSort({ type: sort });
     }
@@ -24,11 +22,11 @@ export const TopPage = ({ page, products, firstCategory }: TopPageProps): JSX.El
         <div className={styles.wrapper}>
             <div className={styles.title}>
                 <Htag tag="h1">{page.title}</Htag>
-                {products && <Tag color='gray' size="m">{products.length}</Tag>}
+                {products && <Tag color='gray' size="m" aria-label={products.length + ' курсов'}>{products.length}</Tag>}
                 <Sort sort={sort} setSort={setSort} />
             </div>
-            <div>
-                {sortedProducts && sortedProducts.map((p) => (<Product layout key={p._id} product={p} />))}
+            <div role="list">
+                {sortedProducts && sortedProducts.map((p) => (<Product role="listitem" layout key={p._id} product={p} />))}
             </div>
             <div className={styles.hhTitle}>
                 <Htag tag="h2">Вакансии - {page.category}</Htag>

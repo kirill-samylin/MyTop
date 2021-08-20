@@ -1,5 +1,5 @@
 .sitebar {
-    display: grid;
-    align-content: start;
-    gap: 20px;
+	display: grid;
+	align-content: start;
+	gap: 20px;
 }
