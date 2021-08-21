@@ -2,7 +2,7 @@ export enum TopLevelCategory {
     Courses,
     Services,
     Books,
-    Product
+    Products
 }
 
 export interface TopPageAdvantage {
@@ -27,14 +27,14 @@ export interface TopPageModal {
     alias: string;
     title: string;
     category: string;
-    seoText: string;
+    seoText?: string;
     tagsTitle: string;
     metaTitle: string;
     metaDescription: string;
     firstCategory: TopLevelCategory;
-    advantages: TopPageAdvantage[];
+    advantages?: TopPageAdvantage[];
     createdAt: Date;
     updatedAt: Date;
-    hh: HhData;
+    hh?: HhData;
     qas: any[];
 }
