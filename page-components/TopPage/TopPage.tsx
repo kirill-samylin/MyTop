@@ -5,11 +5,15 @@ import { Advantages, HhData, Htag, P, Product, Sort, Tag } from '../../compoment
 import { TopLevelCategory } from '../../interfaces/page.interfaces';
 import { SortEnum } from '../../compoments/Sort/Sort.props';
 import { sortReducer } from './sort.reducer';
-import { useScrollY } from '../../hooks/useScrollY';
+import { Erorr404 } from '../../pages/404';
 
 export const TopPage = ({ page, products, firstCategory }: TopPageProps): JSX.Element => {
     const [{ products: sortedProducts, sort }, dispathSort ] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
     
+    if (!page || !products) {
+        return <Erorr404 />
+    }
+
     function setSort(sort: SortEnum) {
         dispathSort({ type: sort });
     }

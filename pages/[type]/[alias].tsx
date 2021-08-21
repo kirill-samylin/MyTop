@@ -13,7 +13,7 @@ import Head from 'next/head';
 function Course({ firstCategory, page, products }: TopPageProps): JSX.Element {
   return (
       <>
-        <Head>
+        {page && <><Head>
             <title>{page.metaTitle}</title>
             <meta name="description" content={page.metaDescription}/>
             <meta property="og:title" content={page.metaTitle}/>
@@ -24,7 +24,7 @@ function Course({ firstCategory, page, products }: TopPageProps): JSX.Element {
             firstCategory={firstCategory} 
             page={page} 
             products={products} 
-        />
+        /></>}
     </>
   );
 };

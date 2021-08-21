@@ -41,6 +41,11 @@
 
 .description {
 	grid-column: start / end;
+
+	margin-bottom: 15px;
+
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .feature {
@@ -83,13 +88,6 @@
 
 .rating {
 	align-self: flex-end;
-}
-
-.description {
-	margin-bottom: 15px;
-
-	font-size: 16px;
-	line-height: 24px;
 }
 
 .priceTitle,
